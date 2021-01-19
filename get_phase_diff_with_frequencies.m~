@@ -1,0 +1,15 @@
+function [PhDiff,base] = get_phase_diff_with_frequencies(x, y)
+treshold = 0;
+x = x(:);
+y = y(:);
+fs = 8000;
+X = fft(x);
+Y = fft(y);
+N = size(Y,1);
+Ay = abs(Y);T
+end
+[~, indx] = max(Ax);
+[~, indy] = max(Ay);
+base = fs/N * indx;
+PhDiff = angle(Y(indy)) - angle(X(indx));
+end

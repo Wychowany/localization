@@ -1,0 +1,26 @@
+function [PhDiff,base] = phdiffmeasure(x, y)
+fs = 8000;
+x = x(:);
+y = y(:);
+
+X = fft(x); 
+Y = fft(y);
+
+N = size(Y,1);
+Ay = abs(Y);
+Ax = abs(X);
+Ay = Ay/N;
+Ax = Ax/N;
+Ay = Ay(1:N/2+1);
+Ax = Ax(1:N/2+1);
+Ay(2:end-1) = 2*Ay(2:end-1);
+Ax(2:end-1) = 2*Ax(2:end-1);
+f_step = fs/N;     % frequency step per one sample
+f = 0:f_step:fs/2; % frequency scale for the plot
+plot(f, Ax);
+[fmax, indx] = max(Ax);
+fs/N * 
+[~, indy] = max(Ay);
+PhDiff = angle(Y(indy)) - angle(X(indx));
+base = indy;
+end

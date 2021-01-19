@@ -1,0 +1,16 @@
+function ang = calculate_angles(x1, x2)
+d=0.04;
+c=343;
+[theta, f] = get_phase_diff_with_frequencies(x1,x2);
+for i = 1:size(theta)
+    lambda = c/f(i);
+    deltaD =theta * lambda/(2*pi);
+    sinus = deltaD/d;
+    if sinus > 1
+        sinus = 1;
+    elseif sinus < -1
+        sinus = -1;
+    end
+    ang(i = rad2deg(asin(sinus));
+end
+end
