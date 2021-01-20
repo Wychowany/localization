@@ -1,4 +1,6 @@
 function [PhDiff,base] = get_phase_diff_with_frequencies(x, y, treshold)
+PhDiff=[];
+base=[];
 x = x(:);
 y = y(:);
 fs = 8000;
@@ -15,7 +17,7 @@ Ay(2:end-1) = 2*Ay(2:end-1);
 Ax(2:end-1) = 2*Ax(2:end-1);
 f_step = fs/N;     % frequency step per one sample
 f = 0:f_step:fs/2; % frequency scale for the plot
-plot(Ax);
+% plot(Ax);
 j=1;
 for i = 1:size(f,2)
     if Ax(i) > treshold
