@@ -27,17 +27,17 @@ window_size = 256;
 no_windows = floor(size(x1,1)/window_size);
 suma = [];
 % sound(x1)
-figure;
-for i=1:no_windows
-    
-    results12 = calculate_angles(x3( (i-1)*window_size+1 : window_size*i ),x2((i-1)*window_size+1 : window_size*i), treshold);
-    suma = [suma results12];
-end
-histogram(suma,1000);
+% figure;
+% for i=1:no_windows
+%     
+%     results12 = calculate_angles(x3( (i-1)*window_size+1 : window_size*i ),x2((i-1)*window_size+1 : window_size*i), treshold);
+%     suma = [suma results12];
+% end
+% histogram(suma,1000);
 
-% figure;
-% result23 = calculate_angles(x2,x3, treshold);
-% histogram(result23,100);
-% figure;
-% result31 = calculate_angles(x3,x1, treshold);
-% histogram(result31,100);
+figure;
+result23 = calculate_angles(x1,x3, treshold);
+histogram(result23,1000);
+figure;
+result31 = calculate_angles(x3,x2, treshold);
+histogram(result31,1000);
