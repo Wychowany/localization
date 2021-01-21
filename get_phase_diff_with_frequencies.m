@@ -1,8 +1,13 @@
 function [PhDiff,base] = get_phase_diff_with_frequencies(x, y, treshold)
+% function calcualting phase difference using fft
+% phase difference
 PhDiff=[];
+% frequency for chosen phases
 base=[];
+
 x = x(:);
 y = y(:);
+% sampling rate
 fs = 8000;
 X = fft(x);
 Y = fft(y);
@@ -20,6 +25,7 @@ f = 0:f_step:fs/2; % frequency scale for the plot
 % plot(Ax);
 j=1;
 for i = 1:size(f,2)
+    % if signal is not noise
     if Ax(i) > treshold
         base(j) = fs/N * i; % frequency
         PhDiff(j) = angle(Y(i)) - angle(X(i));
